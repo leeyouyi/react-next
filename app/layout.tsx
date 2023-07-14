@@ -1,7 +1,9 @@
 import "./globals.css";
+import "@/assets/_icomoon.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Head from "next/head";
+import { Providers } from "./providers";
+import LoadingMask from "@/components/LoadingMask";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <noscript dangerouslySetInnerHTML={{ __html: gtagBody }} />
-        {children}
+        <Providers>
+          <LoadingMask />
+          {children}
+        </Providers>
       </body>
     </html>
   );
